@@ -1,57 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Banner from './components/Banner'
+import './static/css/reset.css'
 
-/* HEAD */
-class Head extends React.Component {
-  render() {
-    return (
-      <div className='panel-heading'>
-        <h3 className='panel-title'>
-          {/* 子组件通过属性 */}
-          点击次数： {this.props.count}
-        </h3>
-      </div>
-    )
-  }
-}
+let IMG_DATA = [{
+    id: 1,
+    title: '',
+    pic: './static/images/1.jpg'
+  }, {
+    id: 2,
+    title: '',
+    pic: './static/images/2.jpg'
+  }, {
+    id: 3,
+    title: '',
+    pic: './static/images/3.jpg'
+  }]
 
-/* BODY */
-class Body extends React.Component {
-  render() {
-    return (
-      <div className='panel-body'>
-       <button 
-        className='btn btn-success'
-        onClick={this.props.callBack}
-        >点我啊</button>
-      </div>
-    )
-  }
-}
-
-class Panel extends React.Component {
-  constructor () {
-    super()
-    this.state = {n: 0}
-  }
-  render () {
-    let styleObj = {width: '40%', margin: '20px auto'}
-    return (
-      <section className="panel panel-default" style={styleObj}>
-        {/* 父组件中在调取子组件的时候，把信息通过属性传递给子组件 */}
-        <Head count={this.state.n}/>
-        {/* 父组件把自己的一个方法基于属性传递给子组件，目的在子组件中执行这个方法 */}
-        <Body callBack={this.fn}/>
-      </section>
-    )
-  }
-  fn = () => {
-    this.setState({
-      n: this.state.n + 1 
-    })
-  }
-}
-
-ReactDOM.render(<Panel/>, document.querySelector('#root'))
-
+ReactDOM.render(<main>
+  {/* 
+    * data: 轮播图绑定的数据（[]）
+    * intenrval：自动轮播间隔的时间（3000ms）
+    * step：默认展示图片的索引（前后各克隆一张）（1）
+    * speed：每一张切换所需要的运动时间（300ms）
+    */}
+  <Banner 
+    data={IMG_DATA}
+    interval={3000}
+    step={1}
+    speed={300}/>
+</main>,document.querySelector('#root'))

@@ -1,0 +1,9 @@
+.container{
+  position: relative;
+  margin: 0 auto;
+  width: 538px;
+  /* 1000 300 */
+  height: 270px;
+  overflow: hidden;
+  text-align: center;
+}
