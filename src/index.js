@@ -3,18 +3,19 @@ import ReactDOM from 'react-dom'
 import Banner from './components/Banner'
 import './static/css/reset.css'
 
+// 在react的jsx中需要使用图片等资源的时候，资源的地址不能使用相对地址（因为经过webapck编译后，资源地址的路径已经改变了，原有的相对地址无法找到对应的资源），此时我们需要基于es6Module或者common.js规范
 let IMG_DATA = [{
     id: 1,
     title: '',
-    pic: './static/images/1.jpg'
+    pic: require('./static/images/1.jpg')
   }, {
     id: 2,
     title: '',
-    pic: './static/images/2.jpg'
+    pic: require('./static/images/2.jpg')
   }, {
     id: 3,
     title: '',
-    pic: './static/images/3.jpg'
+    pic: require('./static/images/3.jpg')
   }]
 
 ReactDOM.render(<main>

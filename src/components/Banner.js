@@ -18,24 +18,38 @@ export default class Banner extends React.Component {
   constructor(props) {
     super(props)
   }
-  render () {
-    let {data} = this.props
-    console.log(data)
-    if (data.length === 0) return ''
+  componentWillMount () {
+    let { data } = this.props
     let cloneData = data.slice(0);
     cloneData.push(data[0])
-    cloneData.unshift(data[data.length-1])
+    cloneData.unshift(data[data.length - 1])
+    this.cloneData = cloneData
+  }
+  render () {
+    let {data} = this.props
+    let {cloneData} = this
+    if (data.length === 0) return ''
     return (
       <section className='container'>
         <ul className='wrapper'>
-          <li>
-            <img src="" alt=""/>
-          </li>
+          {
+            cloneData.map((item, index) => {
+              return <li key={index}>
+                <img src={item.pic} alt={item.title}/>
+              </li>
+            })
+          }
         </ul>
         <ul className='focus'>
-          <li></li>
+          {
+            data.map((item, index) => {
+              return <li key={index}></li>
+            })
+          }
         </ul>
+        {/* // eslint-disable-next-line  */}
         <a href="javascript:;" className="arrow arrowLeft"></a>
+        {/* // eslint-disable-next-line  */}
         <a href="javascript:;" className="arrow arrowRight"></a>
       </section>
     )
