@@ -3,30 +3,37 @@ import PropTypes from 'prop-types'
 
 export default class VoteFooter extends React.Component{
 
-  static contextTypes = {
-    callBack: PropTypes.func
-  }
+
 
   constructor (props, context) {
     super(props, context)
     console.log(context)
+    console.log(this.props)
   }
 
   render () {
-    console.log('footer render')
-    let {callBack} = this.context
     return <div className={'panel-footer'}>
       <button 
         className={'btn btn-success'} 
         onClick={() => {
-          callBack('support')
+          this.props.myRedux.updateState(state => {
+            let {n = 0} = state
+            return {
+              n: n + 1
+            }
+          })
         }}
         >支持</button>
       &nbsp;&nbsp;
       <button 
         className={'btn btn-danger'}
         onClick={() => {
-          callBack('against')
+          this.props.myRedux.updateState(state => {
+            let {m = 0} = state
+            return {
+              m: m + 1
+            }
+          })
         }}
         >反对</button>
     </div>
