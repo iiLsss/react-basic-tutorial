@@ -2,27 +2,28 @@ import React from 'react'
 import PropsTypes from 'prop-types'
 export default class VoteBody extends React.Component {
 
-  constructor (props, context){
-    super(props, context)
-    console.log(context)
-    this.state = {
-      refresh: 0
-    }
+  constructor (props){
+    super(props)
+    // init state
+    let { n, m } = this.props.store.getState().vote
+
+    this.state = {n, m}
   }
 
   componentDidMount () {
-    this.props.myRedux.subScript(() => {
-      this.setState({
-        refresh: this.state.refresh + 1
-      })
+    this.props.store.subscribe(() => {
+      let { n, m } = this.props.store.getState().vote
+      this.setState({n,m})
     })
   }
 
   render () {
-    let state = this.props.myRedux.getState()
-    let {n = 0, m = 0} = state
+
+    let { n, m } = this.props.store.getState().vote
+    console.log(this.props.store.getState().vote)
+    console.log(1312312)
     let rate = (n / (n + m)) * 100
-    isNaN(rate) ? rate = 0 : console.log(rate)
+    isNaN(rate) ? rate = 0 : console.log(1)
     return <div className="panel-body">
       支持人数：<span>{n}</span>
       <br/>

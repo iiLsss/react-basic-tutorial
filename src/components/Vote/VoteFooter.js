@@ -1,39 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import * as TYPE from '../../store/action-types'
+import action from '../../store/action'
 export default class VoteFooter extends React.Component{
-
-
 
   constructor (props, context) {
     super(props, context)
-    console.log(context)
-    console.log(this.props)
   }
 
   render () {
+    console.log(TYPE)
+
     return <div className={'panel-footer'}>
       <button 
         className={'btn btn-success'} 
         onClick={() => {
-          this.props.myRedux.updateState(state => {
-            let {n = 0} = state
-            return {
-              n: n + 1
-            }
-          })
+          this.props.store.dispatch(action.vote.support())
         }}
         >支持</button>
       &nbsp;&nbsp;
       <button 
         className={'btn btn-danger'}
         onClick={() => {
-          this.props.myRedux.updateState(state => {
-            let {m = 0} = state
-            return {
-              m: m + 1
-            }
-          })
+          this.props.store.dispatch(action.vote.against())
         }}
         >反对</button>
     </div>
