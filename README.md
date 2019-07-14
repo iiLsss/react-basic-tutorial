@@ -33,7 +33,7 @@ JSX: REACT独有的语法  JAVASCRIPT+XML
 2. 在JSX中出现的{}是存放js的，但是要求js代码执行完成有返回的结果
 ```
 
-React基础知识复习
+## React基础知识复习
 1. react是face-book公司开发的一款MVC版js框架
   MVC:Model（数据层）、VIEW（视图层）、CONTROLLER（控制层）
   核心思想：通过数据的改变来影响视图的渲染（数据驱动）
@@ -46,7 +46,7 @@ React基础知识复习
 
 
 
-redux基础知识复习
+## redux基础知识复习
 
 redux：进行状态统一管理的库（适用于任何技术体系的项目）
   1.  只要两个或者多个组件之间想要实现信息的共享，都可以基于redux解决，把共享的信息存储到redux容器中进行管理
@@ -55,5 +55,27 @@ redux：进行状态统一管理的库（适用于任何技术体系的项目）
 **createStore**
 
 createStore(reducer) 存储的是各个组件状态信息
+```
+发布订阅事件池
+当容器中的状态改变，通知事件池中的方法一次执行
+```
 
 reducer函数 修改容器状态信息的管理员
+```js
+state: 原有状态 action:派发任务
+
+switch (action.type) {
+  case TYPE.XXX：
+      sate = ...
+}
+
+return state => 把原有状态信息替换
+```
+
+`store.subscribe(() => {})`
+subscribe是把方法增加到事件池中
+增加的方法一般都是：从新容器中获取最新的状态信息系，然后重新渲染组件
+
+`store.dispatch({type:xxx,count:123})`
+
+通过派发恩物，告知reducer执行需要把state和action传递进行，reducer执行，把容器中的状态改变
