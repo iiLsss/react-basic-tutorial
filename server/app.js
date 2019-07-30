@@ -1,36 +1,28 @@
 const koa = require('koa')
+const session = require('koa-session')
 const app = new koa()
-app.use(async ctx => {
-  if (ctx.url === '/' && ctx.method === 'GET') {
-    let html = `
-      <form method="POST" enctype="multipart/form-data">
-        <p>
-          姓名：<input type="text" name="username" />
-        </p>
-        <p>
-          上传 <input type="file" name="file"/>
-        </p>
-        <input type="submit" value="提交">
-      </form>
-    `
-    ctx.body = html
-  } else if (ctx.url === '/' && ctx.method === 'POST') {
-    console.log(ctx.res)
-    ctx.body = 'success'
-  } else {
-    // 其他请求显示404
-    ctx.body = '<h1>404！！！ o(╯□╰)o</h1>'
-  }
+
+app.keys = ['some secret hurr'] //  签名 默认
+
+const CONFIG = {
+  key: 'koa:sess', // cookie key (default is koa:sess)
+  maxAge: 86400000, // cookie 的过期时间 maxAge in ms (default is 1 days)
+  autoCommit: true, /** (boolean) automatically commit headers (default true) */
+  overwrite: true, /** (boolean) can overwrite or not (default true) */
+  httpOnly: true, /** (boolean) httpOnly or not (default true) */
+  signed: true, /** (boolean) signed or not (default true) */
+  rolling: false, /** (boolean) Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown. (default is false) */
+  renew: false, /** (boolean) renew session when session is nearly expired, so we can always keep user logged in. (default is false)*/
+}
+app.use(session(CONFIG, app));
+
+app.use(ctx => {
+  if (ctx.path === '/favicon.ico') return
+  let n = ctx.session.views || 0
+  ctx.session.views = ++n;
+  ctx.body = n + ' views'
 })
 
 app.listen(3333, () => {
   console.log(`server running at 3333`)
 })
-
-
-
-/**
- * 请求头中的内容类型
- * Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryiY7SKBu5jEyZBCSk
- *
- */
