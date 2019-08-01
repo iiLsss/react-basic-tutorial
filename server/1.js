@@ -1,5 +1,4 @@
 const http = require('http')
-
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
@@ -12,7 +11,6 @@ server.listen(3333, () => {
 
 
 const koa = require('koa')
-
 const app = new koa()
 
 app.listen(3333, () => {

@@ -16,8 +16,8 @@ app.use(async ctx => {
     })
     // maxAge=> 一个数字表示从Date.now()得到的毫秒值
     // expires=> cookie过期时间
-    // path=> cookie路径，默认‘/’
-    // domain=> 域名
+    // path=> 写cookie所在的路径，默认‘/’ 
+    // domain=> 写cookie所在的域名
     // secure=> 默认fasle，设置成true则https也可访问
     // httpOnly=> 是否只是服务器可访问cookie，默认true
     ctx.body = `welcome ${ctx.cookies.get('username')}`
