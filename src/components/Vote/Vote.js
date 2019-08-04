@@ -1,16 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import VoteHead from './VoteHead'
 import VoteBody from './VoteBody'
 import VoteFooter from './VoteFooter'
 
 export default class vote extends React.Component {
-
-  constructor (props){
-    super(props)
-  }
-
   render () {
     let {store} = this.props;
     console.log(store)

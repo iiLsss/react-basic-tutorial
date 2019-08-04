@@ -79,3 +79,19 @@ subscribe是把方法增加到事件池中
 `store.dispatch({type:xxx,count:123})`
 
 通过派发恩物，告知reducer执行需要把state和action传递进行，reducer执行，把容器中的状态改变
+
+## react-redux
+
+react-redux是把redux进一步封装，适配react项目，让redux操作更简洁
+
+store文件夹的内容和redux一模一样
+在组件调取使用的时候可以优化一些步骤
+
+1.provider根组件
+
+当前整个项目都在provider组件下
+作用就是把创建的store可以供内部任何后代组件使用(基于上下文完成的)
+
+2.connect高阶组件
+
+

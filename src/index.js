@@ -1,12 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Vote from './components/Vote/Vote'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import store from './store'
+import { Provider } from 'react-redux'
 
-ReactDOM.render(<main>
-  <Vote 
-    title={'谁支持谁反对'}
-    store={store}
-  />
-</main>,document.querySelector('#root'))
+ReactDOM.render(<Provider>
+  <div>a</div>
+  <div>a</div>
+</Provider>,document.querySelector('#root'))
