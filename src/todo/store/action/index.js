@@ -1,15 +1,7 @@
-import * as TYPE from '../action-types'
+import todo from './todo'
 
-export default function todo(state = {
-  data: [],
-  flag: 'all'
-}, action) {
-  switch (action.type) {
-    case TYPE.xx:
-      console.log(12)
-      break;
-    default:
-      break;
-  }
-  return state
+let action = {
+  todo
 }
+
+export default action

@@ -95,3 +95,8 @@ store文件夹的内容和redux一模一样
 2.connect高阶组件
 
 
+
+1. action-types 增加行为标识信息
+2. action 增加行为方法
+3. head.js调取action中方法
+4. reducer中修改state状态

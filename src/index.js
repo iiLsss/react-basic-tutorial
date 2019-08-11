@@ -1,6 +1,7 @@
 import React from 'react'
-import ReactDOM, {render} from 'react-dom'
-
+import {render} from 'react-dom'
+import { Provider } from 'react-redux'
+import store from './todo/store'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
@@ -10,8 +11,12 @@ import Head from './todo/components/head'
 import Body from './todo/components/body'
 import Footer from './todo/components/footer'
 
-render(<main className="panel panel-default">
-  <Head></Head>
-  <Body></Body>  
-  <Footer></Footer>
-</main>, document.querySelector('#root'))
+render(
+  <Provider store={store}>
+    <main className="panel panel-default">
+      <Head></Head>
+      <Body></Body>
+      <Footer></Footer>
+    </main>
+  </Provider>
+, document.querySelector('#root'))
