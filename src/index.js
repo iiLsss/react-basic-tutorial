@@ -1,22 +1,13 @@
 import React from 'react'
 import {render} from 'react-dom'
-import { Provider } from 'react-redux'
-import store from './todo/store'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import { HashRouter, Route } from 'react-router-dom'
 
-
-import './todo/static/less/todo.less'
-
-import Head from './todo/components/head'
-import Body from './todo/components/body'
-import Footer from './todo/components/footer'
+import A from './router-dom/components/A'
+import B from './router-dom/components/B'
 
 render(
-  <Provider store={store}>
-    <main className="panel panel-default">
-      <Head></Head>
-      <Body></Body>
-      <Footer></Footer>
-    </main>
-  </Provider>
+  <HashRouter>
+    <Route path="/" exact component={A}></Route>
+    <Route path="/b" component={B}></Route>
+  </HashRouter>
 , document.querySelector('#root'))

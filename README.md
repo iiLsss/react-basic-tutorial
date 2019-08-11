@@ -100,3 +100,29 @@ store文件夹的内容和redux一模一样
 2. action 增加行为方法
 3. head.js调取action中方法
 4. reducer中修改state状态
+
+
+spa & mpa
+
+- 单页面应用SPA
+- 多页面应用MPA
+如何实现单页面应用
+
+1. 项目基于服务器渲染
+2. 基于iframe实现单页面应用
+3. 模块化开发
+  AMD: require.js
+  CMD: sea.js
+
+## react-router-dom
+
+BrowserRouter vs HashRouter
+两种常用的路由实现思想
+BrowserRouter浏览器路由
+HashRouter哈希
+
+[BrowserRouter]
+A <Router> that uses the HTML5 history API (pushState, replaceState and the popstate event) to keep your UI in sync with the URL.
+
+[HashRouter]
+A <Router> that uses the hash portion of the URL (i.e. window.location.hash) to keep your UI in sync with the URL.
