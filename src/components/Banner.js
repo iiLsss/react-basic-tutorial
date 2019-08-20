@@ -24,20 +24,19 @@ export default class Banner extends React.Component {
       speed
     }
   }
-  componentWillMount () {
+
+  componentDidMount () {
     let { data } = this.props
     let cloneData = data.slice(0);
     cloneData.push(data[0])
     cloneData.unshift(data[data.length - 1])
     this.cloneData = cloneData
-  }
-
-  componentDidMount () {
+    console.log(this.cloneData);
     // 把定时器返回值挂载到实例上，方便后期清除，结束自动轮播
     this.autoTimer = setInterval(this.moveRight,this.props.interval)
   }
 
-  componentWillUpdate (nextProps, nextState) {
+  shouldComponentUpdate (nextProps, nextState) {
     // 边界判断：如果最新索引大于最大索引
     if (nextState.step > this.cloneData.length - 1) {
       this.setState({
@@ -53,6 +52,8 @@ export default class Banner extends React.Component {
         speed: 0
       })
     }
+    return true
+
 
   }
   componentDidUpdate () {
@@ -78,12 +79,12 @@ export default class Banner extends React.Component {
         })
       }, 0)
     }
-
   }
 
   render () {
     let {data} = this.props
-    let {cloneData} = this
+    console.log(this.props)
+    let cloneData = data.slice()
     if (data.length === 0) return ''
 
     let wrapperStyle = {
