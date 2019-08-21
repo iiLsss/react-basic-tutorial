@@ -126,3 +126,7 @@ A <Router> that uses the HTML5 history API (pushState, replaceState and the pops
 
 [HashRouter]
 A <Router> that uses the hash portion of the URL (i.e. window.location.hash) to keep your UI in sync with the URL.
+
+exact 严格匹配
+
+Switch 只要有一种情况校验成功，就不在向后校验
