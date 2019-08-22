@@ -33,6 +33,7 @@ render(
         search: 给定向的地址传参
         state: 给定向后的组件传递一些参数 
       }
+      push 如果设置了这个属性，当前跳转的地址会加入history stack中记录一条
        */}
       <Redirect to="/" />
     </Switch>
