@@ -1,7 +1,11 @@
+import React from 'react'
 import { BrowserRouter , Switch, Route, Redirect } from 'react-router-dom';
 
-export const Router = () => {
-  return (
+import Home from '../views/Home'
+import Custom from '../views/Custom'
+import Plan from '../views/Plan'
+
+export default () =>  (
     <BrowserRouter>
         <Switch>
           <Route path='/' exact component={Home} />
@@ -11,7 +15,6 @@ export const Router = () => {
         </Switch>
     </BrowserRouter>
   )
-}
 
 
 
