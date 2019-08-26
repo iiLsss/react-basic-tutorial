@@ -4,7 +4,7 @@ export class Home extends Component {
   render() {
     return (
       <div>
-        home
+        首页
       </div>
     )
   }

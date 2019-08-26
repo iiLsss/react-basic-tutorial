@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
+import { BrowserRouter  } from 'react-router-dom';
 import Router from './router'
 import store from './store'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -8,8 +9,10 @@ export class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Nav />
-        <Router />
+        <BrowserRouter>
+          <Nav />
+          <Router />
+        </BrowserRouter>
       </Provider>
     )
   }

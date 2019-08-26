@@ -1,19 +1,17 @@
 import React from 'react'
-import { BrowserRouter , Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Home from '../views/Home'
-import Custom from '../views/Custom'
-import Plan from '../views/Plan'
+import Manage from '../views/Manage'
+import Center from '../views/Center'
 
 export default () =>  (
-    <BrowserRouter>
-        <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/custom' component={Custom} />
-          <Route path='/plan' component={Plan} />
-          <Redirect to='/?lx=unsafe' />
-        </Switch>
-    </BrowserRouter>
+  <Switch>
+    <Route path='/' exact component={Home} />
+    <Route path='/manage' component={Manage} />
+    <Route path='/center' component={Center} />
+    <Redirect to='/?lx=unsafe' />
+  </Switch>
   )
 
 
