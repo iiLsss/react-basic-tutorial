@@ -130,3 +130,11 @@ A <Router> that uses the hash portion of the URL (i.e. window.location.hash) to 
 exact 严格匹配
 
 Switch 只要有一种情况校验成功，就不在向后校验
+
+
+redux中间件
+redux-logger: 能够在控制台清晰的展示出当前redux操作的流程和信息
+
+redux-thunk:处理异步的dispatch派发
+
+redux-promise:在dispatch派发的时候支持promise操作

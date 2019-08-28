@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 export class index extends Component {
   render() {
@@ -10,9 +11,19 @@ export class index extends Component {
           data.map((item, index) => {
             return (
 
-              <li className="list-group-item" key={index}>
-                编号：{item.id}
-                姓名：{item.name}
+              <li 
+                className="list-group-item"
+                key={index}
+                // onClick={ev => { this.props.history.push('/manage/details')}}
+              >
+                <Link to={{
+                  pathname: '/manage/details',
+                  // search:`?id=${item.id}`,
+                  state: item.id
+                }}>
+                  编号：{item.id}
+                  姓名：{item.name}
+                </Link>
               </li>
             )
           })
