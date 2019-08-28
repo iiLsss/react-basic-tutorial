@@ -1,7 +1,6 @@
-import admin from './todo'
-
+import custom from './custom'
 let action = {
-  admin
+  custom
 }
 
 export default action

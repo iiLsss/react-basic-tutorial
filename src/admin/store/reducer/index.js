@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import admin from './admin'
+import custom from './custom'
 
 let reducer = combineReducers({
-  admin
+  custom
 })
 
 export default reducer
