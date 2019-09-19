@@ -10,7 +10,6 @@ export class index extends Component {
         {
           data.map((item, index) => {
             return (
-
               <li 
                 className="list-group-item"
                 key={index}
