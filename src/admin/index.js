@@ -9,7 +9,7 @@ export class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter basename="/test">
           <Nav />
           <Router />
         </BrowserRouter>
