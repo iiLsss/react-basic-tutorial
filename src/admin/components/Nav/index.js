@@ -15,6 +15,9 @@ export class Nav extends Component {
               <NavLink to="/">首页</NavLink>
             </li>
             <li>
+              <NavLink to="/blackson">黑儿</NavLink>
+            </li>
+            <li>
               <NavLink to="/manage">管理</NavLink>
             </li>
             <li>
