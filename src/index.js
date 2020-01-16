@@ -1,12 +1,13 @@
 import React from 'react'
 import {render} from 'react-dom'
-import Admin from './admin'
-
 // import Galaxy from '@galaxy/test'
 
-// console.log(Galaxy)
-// let a = new Galaxy()
+let Element = <div>hello world</div>
+
+let a = React.createElement('div', {className: 'box'}, 'hello world')
+console.log(Element)
+
 render(
-  <Admin />
+  a
 , document.querySelector('#root'))
 

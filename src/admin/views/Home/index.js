@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { ConfigProvider, DatePicker, Icon, Button, Upload, } from 'antd'
 import zhCN from 'antd/es/locale/zh_CN';
-// import 'mone'
 import '../../common/css/antd.css'
 import 'moment/locale/zh-cn';
 import axios from 'axios'
