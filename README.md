@@ -1,3 +1,17 @@
+##  react-basic-
+
+### PureComponent 
+
+
+- 当一个组件的`props`或`state`变更，React 会将最新返回的元素与之前渲染的元素进行对比，以此决定是否有必要更新真实的 DOM，当它们不相同时 React 会更新该 DOM。
+- 如果渲染的组件非常多时可以通过覆盖生命周期方法 shouldComponentUpdate 来进行优化
+- shouldComponentUpdate 方法会在重新渲染前被触发。其默认实现是返回 true,如果组件不需要更新，可以在`shouldComponentUpdate`中返回 false 来跳过整个渲染过程。其包括该组件的 render 调用以及之后的操作
+- PureComponent通过prop和state的浅比较来实现`shouldComponentUpdate`
+
+### React.memo()
+
+----
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
