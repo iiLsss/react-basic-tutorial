@@ -1,4 +1,4 @@
-import React, { Component, useState , useRef, useCallback} from 'react'
+import React, { Component, useState , useRef, useCallback, memo, useMemo} from 'react'
 
  class Counter extends Component {
   state = { number : 0, name: 'diqiu '}
@@ -143,24 +143,57 @@ function App() {
   )
 }
 
+function Child({onBtnClick, data}) {
+  console.log('render Child')
+  return (
+    <>
+      <p> {data.number}</p>
+      <button onClick={onBtnClick}>++++++</button>
+    </>
+  )
+}
+// memory 记忆 返回新组件，如果出组件的属性不改变则不刷新， 类似shouldComponentUpdate
+let MemoChild = memo(Child)
+
 // memo useMemo
 function App2() {
   let [state, setState] = useState({number: 0})
   let [value, setValue] = useState('')
-  // useCallback 对函数进行缓存
-  // 第二个参数 依赖变量的数组 当数组中变量发送改变后 就会重新生成新的函数
+
   let add = useCallback(() => {
     setState({number: state.number + 1})
   }, [state.number])
-  console.log('lastState === add', lastState === add)
-  lastState = add
+  // TODO: onchange 放入 useCallback
+  // let data = { number: state.number}
+  let data = useMemo(() => ({number: state.number}), [state])
+  console.log('render app2')
   return (
     <div>
-      <p> {state.number}</p>
-      <button onClick={add}>++++++</button>
+      <MemoChild
+        data={data}
+        onBtnClick={add}
+      />
+      
       <input type="text" value={value} onChange={event => setValue(event.target.value)} />
     </div>
   )
 }
+
+// React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render 
+// React Hook "useState" is called in function "add" which is neither a React function component or a custom React Hook function 
+// function App3() {
+//   let [number, setNumber] = useState(0)
+//   if (!number%2) {
+//     let [name, setName] = useState('diqiu')
+//   }
+
+//   function add() {
+//     let [name, setName] = useState('diqiu')
+//   }
+
+//   return (
+//     <div>{number + '' + name}</div>
+//   )
+// }
 
 export default App2
