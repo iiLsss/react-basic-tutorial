@@ -31,6 +31,8 @@ class App extends React.Component {
 
 function App2() {
   let [state, setState] = useState({number: 0})
+  // useEffect 里的函数会在每次函数组件渲染的时候执行
+  // [] 空数组 执行一次
   useEffect(()=>{
     document.title = state.number
   }, [state.number])
