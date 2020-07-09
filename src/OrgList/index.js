@@ -75,9 +75,7 @@ class Demo extends React.Component {
         visible: true,
         currentUserList: info.node.user_list
       })
-
     }
-
 
     console.log(selectedKeys);
     this.setState({
@@ -120,18 +118,15 @@ class Demo extends React.Component {
       <>
         选中人员列表{
           userKeys.map(item => (
-            <span key={item}>{item}-----</span>
+            <span key={item}>-----{item}-----</span>
           ))
         }
         <Tree
           checkable
           onExpand={this.onExpand}
-          // expandedKeys={expandedKeys}
-          // autoExpandParent={this.autoExpandParent}
           onCheck={this.onCheck}
           checkedKeys={checkedKeys}
           onSelect={this.onSelect}
-          // selectedKeys={selectedKeys}
           treeData={data}
         />
           <Modal

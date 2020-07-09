@@ -16,11 +16,18 @@ import 'antd/dist/antd.css';
 // import TodoList from './TodoList'
 
 // import CheckTree from './rsuite/CheckTree'
-import OrgList from './OrgList'
-import TreeList from './TreeList'
-ReactDOM.render(<>
-  <OrgList />
-  <br/>
-  <br/>
-  <TreeList />
+// import OrgList from './OrgList'
+// import TreeList from './TreeList'
+
+
+// ReactDOM.render(<>
+//   <OrgList />
+//   <br/>
+//   <br/>
+//   <TreeList />
+  // </>, document.getElementById('root'))
+
+import WebRtc from './pages/webRtc'
+  ReactDOM.render(<>
+    <WebRtc />
   </>, document.getElementById('root'))
