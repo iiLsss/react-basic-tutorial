@@ -46,6 +46,7 @@ export default () => {
   const photograph = () => {
     let ctx = canvasRef.getContext('2d')
     ctx.drawImage(videoRef.current, 0, 0, 600, 300)
+
   }
 
 
@@ -58,8 +59,7 @@ export default () => {
       <Divider type="vertical" />
       <Button type="danger" onClick={closeCamera}>关闭</Button>
       <Divider type="vertical" />
-      <Button onClick={closeCamera}>截图</Button> 
+      <Button onClick={photograph}>截图</Button> 
     </>
-          
   )
 }

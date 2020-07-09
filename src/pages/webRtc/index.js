@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import {Button} from 'antd'
+import {Button, Tabs} from 'antd'
 import CheckWebRTC from './Support'
 import Camera from './Camera'
+
+const { TabPane } = Tabs
 
 export default class index extends Component {
 
@@ -9,8 +11,19 @@ export default class index extends Component {
   render() {
     return (
       <div>
-        <CheckWebRTC />
-        <Camera />
+      <Tabs defaultActiveKey="1">
+          <TabPane tab="Tab 1" key="1">
+            <CheckWebRTC />
+            <Camera />
+          </TabPane>
+          <TabPane tab="Tab 2" key="2">
+            Content of Tab Pane 2
+          </TabPane>
+          <TabPane tab="Tab 3" key="3">
+            Content of Tab Pane 3
+          </TabPane>
+        </Tabs>
+        
   
       </div>
     )
