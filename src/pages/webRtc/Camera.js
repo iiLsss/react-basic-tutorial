@@ -43,12 +43,6 @@ export default () => {
     mediaStream.getTracks().forEach(track => track.stop());
   }
 
-  const photograph = () => {
-    let ctx = canvasRef.getContext('2d')
-    ctx.drawImage(videoRef.current, 0, 0, 600, 300)
-
-  }
-
 
   return (
     <>
@@ -59,7 +53,6 @@ export default () => {
       <Divider type="vertical" />
       <Button type="danger" onClick={closeCamera}>关闭</Button>
       <Divider type="vertical" />
-      <Button onClick={photograph}>截图</Button> 
     </>
   )
 }
