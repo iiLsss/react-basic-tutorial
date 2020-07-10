@@ -18,6 +18,9 @@ export default () => {
  
   return (
     <>
+      <p>
+        <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebRTC_API/adapter.js">https://developer.mozilla.org/zh-CN/docs/Web/API/WebRTC_API/adapter.js</a>
+      </p>
       <Button onClick={isCheckWebTRC}>检查是否支持</Button>
       <p>{isSupport}</p>
     </>

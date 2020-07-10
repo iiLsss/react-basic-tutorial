@@ -49,7 +49,7 @@ export default () => {
     }
   
     try {
-      mediaRecorder = new MediaRecorder(stream, options);
+      mediaRecorder = new MediaRecorder(stream,options );
     } catch (e) {
       console.error('Exception while creating MediaRecorder:', e);
       return;
@@ -61,6 +61,7 @@ export default () => {
       console.log(event)
     };
     mediaRecorder.ondataavailable = (event) =>{
+      console.log(event.data);
       if (event.data && event.data.size > 0) {
         recordedBlobs.push(event.data);
       }

@@ -46,6 +46,11 @@ export default () => {
 
   return (
     <>
+      <p>
+        <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/getUserMedia">
+          https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/getUserMedia
+        </a>
+      </p>
       <video ref={videoRef} width="600" height="300"></video>
       <canvas ref={canvasRef} width="600" height="300"></canvas>
       <br/>
