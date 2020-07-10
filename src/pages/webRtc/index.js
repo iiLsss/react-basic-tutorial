@@ -5,6 +5,7 @@ import Camera from './Camera'
 import Canvas from './Canvas'
 import Audio from './Audio'
 import Record from './record'
+import ShareScreen from './ShareScreen'
 
 const { TabPane } = Tabs
 
@@ -27,6 +28,9 @@ export default class index extends Component {
           </TabPane>
           <TabPane tab="Record" key="4">
             <Record />
+          </TabPane>
+          <TabPane tab="ShareScreen" key="5">
+            <ShareScreen />
           </TabPane>
         </Tabs>
       </div>
