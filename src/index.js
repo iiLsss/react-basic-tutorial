@@ -1,5 +1,5 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from './react'
+import ReactDOM from './react-dom'
 
 
 /**
@@ -12,19 +12,18 @@ class Count extends React.Component{
     this.state = {number: 1}
   }
   handleClick = () => {
-    // this.setState({number: 2})
     // console.log(this.state.number)
-    // this.setState({number: 3})
+    this.setState({number: this.state.number + 1})
     // console.log(this.state.number)
     // this.setState({number: 4})
     // console.log(this.state.number)
     // console.log('object');
-    setTimeout(() => {
-      this.setState((state) => ({number: state.number + 1}))
-      console.log(this.state.number)
-      this.setState({number: 4})
-      console.log(this.state.number)
-    })
+    // setTimeout(() => {
+    //   this.setState((state) => ({number: state.number + 1}))
+    //   console.log(this.state.number)
+    //   this.setState({number: 4})
+    //   console.log(this.state.number)
+    // })
   }
 
   render () {

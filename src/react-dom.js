@@ -14,7 +14,7 @@ function render(vDom, container) {
  * 把虚拟DOM 变成真是DOM
  * @param {*} vDom 虚拟DOM null number string array function class
  */
-function createDom(vDom) {
+export function createDom(vDom) {
   // 如果vDom 是一个字符串或者数字，创建一个文本的DOM节点返回
   if (typeof vDom === 'string' || typeof vDom === 'number') {
     return document.createTextNode(vDom)
@@ -33,7 +33,7 @@ function createDom(vDom) {
       return updateClassComponent(vDom)
     } else {
       // 函数组件
-      return  mountFunctionComponent(vDom)
+      return mountFunctionComponent(vDom)
     }
   
   } else {
@@ -89,7 +89,6 @@ function updateClassComponent(vDom) {
  */
 function reconcileChildren(childrenDom, parentDom) {
   for (let i = 0; i < childrenDom.length; i++) {
-    console.log(childrenDom[i], parentDom, );
     render(childrenDom[i], parentDom)
   }
 }
@@ -107,6 +106,8 @@ function updateProps(dom, props) {
       for(let k in styleObj) {
         dom.style[k] = styleObj[k]
       }
+    } else if(key.startsWith('on')) {
+      dom[key.toLocaleLowerCase()] = props[key]
     } else {
       dom[key] = props[key] // dom.className = title
     }
