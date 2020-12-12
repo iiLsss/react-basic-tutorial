@@ -1,17 +1,40 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+/**
+ * state 只允许在constructor 里赋值
+ * 
+ */
+class Count extends React.Component{
+  constructor (props) {
+    super(props)
+    this.state = {number: 1}
+  }
+  handleClick = () => {
+    // this.setState({number: 2})
+    // console.log(this.state.number)
+    // this.setState({number: 3})
+    // console.log(this.state.number)
+    // this.setState({number: 4})
+    // console.log(this.state.number)
+    // console.log('object');
+    setTimeout(() => {
+      this.setState((state) => ({number: state.number + 1}))
+      console.log(this.state.number)
+      this.setState({number: 4})
+      console.log(this.state.number)
+    })
+  }
+
+  render () {
+    return (
+      <div>
+        <p>{this.state.number}</p>
+        <button onClick={this.handleClick}>+</button>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Count />, document.querySelector('#root'))
