@@ -1,8 +1,50 @@
 import {createDom } from './react-dom'
+import { isFunction } from './utils'
+
+// 更新队列
+// 单例
+export let updateQueue = {
+  updaters: [],
+  isBatchingUpdate: false,
+  add(updater) {
+    this.updaters.push(updater)
+  },
+  batchUpdate() {
+    this.updaters.forEach(updater=>updater.updateComponent())
+    this.isBatchingUpdate = false
+  }
+}
+
 
 class Updater {
-  constructor() {
-    this.queue = []
+  constructor(classInstance) {
+    this.classInstance = classInstance
+    this.pendingStates = []
+  }
+  addState(partialState) {
+    this.pendingStates.push(partialState)
+    updateQueue.isBatchingUpdate ? updateQueue.add(this) : this.updateComponent()
+  }
+  updateComponent() {
+    let { pendingStates,  classInstance } = this
+    if(pendingStates.length) {
+      classInstance.state = this.getState()
+      classInstance.forceUpdate()
+    }
+  }
+  getState() {
+    let { classInstance,pendingStates } = this
+    let { state } = classInstance
+    if (pendingStates.length) {
+      this.pendingStates.forEach(nextState => {
+        if (isFunction(nextState)) {
+          nextState = nextState.call(classInstance, state)
+        } 
+        state = { ...state, ...nextState}
+      })
+      this.pendingStates = []
+    }
+    return state
   }
 }
 
@@ -12,29 +54,26 @@ class Component {
     this.props = props
     this.state = {}
     this.queue = []
+    this.Updater = new Updater(this)
   }
   /**
    * 
    * @param {*} partState 部分state
    */
   setState(partState){
-    this.state = {...this.state, ...partState} // 合并state
+    this.Updater.addState(partState)
+  }
+  forceUpdate() {
     let newRenderDom = this.render()
-    updateClassInstance(this, newRenderDom)
+    mountClassComponent(this, newRenderDom)
   }
 }
 
-
-
-function updateClassInstance(classInstance, newRenderDom) {
-  console.log(classInstance,newRenderDom )
+function mountClassComponent(classInstance, newRenderDom) {
   let { dom }  = classInstance
-  console.log(classInstance);
   let newDom = createDom(newRenderDom)
-  console.log(dom.parentNode, dom,newDom);
   dom.parentNode.replaceChild(newDom, dom)
   classInstance.dom = newDom
-
 }
 
 export default Component

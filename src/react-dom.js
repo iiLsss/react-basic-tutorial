@@ -1,4 +1,6 @@
 
+import { addEvent } from './event'
+
 /**
  * 虚拟dom 转换成真是dom
  * @param {*} vDom 虚拟对象
@@ -107,7 +109,8 @@ function updateProps(dom, props) {
         dom.style[k] = styleObj[k]
       }
     } else if(key.startsWith('on')) {
-      dom[key.toLocaleLowerCase()] = props[key]
+      // dom[key.toLocaleLowerCase()] = props[key]
+      addEvent(dom,key.toLocaleLowerCase(),props[key]);
     } else {
       dom[key] = props[key] // dom.className = title
     }

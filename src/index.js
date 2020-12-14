@@ -9,11 +9,11 @@ import ReactDOM from './react-dom'
 class Count extends React.Component{
   constructor (props) {
     super(props)
-    this.state = {number: 1}
+    this.state = {number: 0}
   }
   handleClick = () => {
     // console.log(this.state.number)
-    this.setState({number: this.state.number + 1})
+    // this.setState({number: this.state.number + 1})
     // console.log(this.state.number)
     // this.setState({number: 4})
     // console.log(this.state.number)
@@ -24,6 +24,17 @@ class Count extends React.Component{
     //   this.setState({number: 4})
     //   console.log(this.state.number)
     // })
+    // 实现同步异步更新
+    this.setState({ number: this.state.number + 1 })
+    console.log(this.state.number)
+    this.setState({ number: this.state.number + 1 })
+    console.log(this.state.number)
+    setTimeout(()=>{
+      this.setState({ number: this.state.number + 1 })
+      console.log(this.state.number)
+      this.setState({ number: this.state.number + 1 })
+      console.log(this.state.number)
+    })
   }
 
   render () {
