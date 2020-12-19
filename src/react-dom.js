@@ -8,7 +8,6 @@ import { addEvent } from './event'
  */
 function render(vDom, container) {
   let dom = createDom(vDom)
-  console.log(dom);
   container.appendChild(dom)
 }
 
@@ -25,7 +24,7 @@ export function createDom(vDom) {
     return ''
   }
   // react元素
-  let { type, props } = vDom
+  let { type, props, ref } = vDom
   let dom
   // 如果是一个组件 
   if (typeof type === 'function') {
@@ -56,6 +55,11 @@ export function createDom(vDom) {
   } else {
     dom.textContent = props.children ? props.children.toString() : ''
   }
+
+  if (ref) {
+    ref.current = dom
+  }
+
   return dom
 }
 

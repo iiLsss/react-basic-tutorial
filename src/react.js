@@ -7,9 +7,12 @@ import Component from './Component'
  * @param {*} children 儿子
  */
 function createElement(type, config, children) {
+  let ref
   if (config) {
     delete config.__source
     delete config.__self
+    ref = config.ref
+    delete config.ref
   }
   let props = { ...config }
   if (arguments.length > 3) {
@@ -19,7 +22,8 @@ function createElement(type, config, children) {
   props.children = children
   return {
     type,
-    props
+    props,
+    ref
   }
 }
 
@@ -44,9 +48,16 @@ function createElement(type, config, children) {
 }
  */
 
+function createRef() {
+  return {
+    current:null
+  }
+}
+
 const React =  {
   createElement,
-  Component
+  Component,
+  createRef
 }
 
 export default React

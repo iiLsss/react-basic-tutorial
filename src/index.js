@@ -3,48 +3,34 @@ import ReactDOM from './react-dom'
 
 
 /**
- * state 只允许在constructor 里赋值
- * 
+ * 想在react中获取真实dom元素
+ * 1. ref
  */
-class Count extends React.Component{
-  constructor (props) {
+class Sum extends React.Component {
+
+  constructor(props) {
     super(props)
-    this.state = {number: 0}
+    this.a = React.createRef()
+    this.b = React.createRef()
+    this.c = React.createRef()
   }
-  handleClick = () => {
-    // console.log(this.state.number)
-    // this.setState({number: this.state.number + 1})
-    // console.log(this.state.number)
-    // this.setState({number: 4})
-    // console.log(this.state.number)
-    // console.log('object');
-    // setTimeout(() => {
-    //   this.setState((state) => ({number: state.number + 1}))
-    //   console.log(this.state.number)
-    //   this.setState({number: 4})
-    //   console.log(this.state.number)
-    // })
-    // 实现同步异步更新
-    this.setState({ number: this.state.number + 1 })
-    console.log(this.state.number)
-    this.setState({ number: this.state.number + 1 })
-    console.log(this.state.number)
-    setTimeout(()=>{
-      this.setState({ number: this.state.number + 1 })
-      console.log(this.state.number)
-      this.setState({ number: this.state.number + 1 })
-      console.log(this.state.number)
-    })
+  add = (event) => {
+    let aVal = this.a.current.value
+    let bVal = this.b.current.value
+    this.c.current.value = aVal + bVal
   }
 
-  render () {
+  render() {
     return (
       <div>
-        <p>{this.state.number}</p>
-        <button onClick={this.handleClick}>+</button>
+        <input ref={this.a} type="text" />
+        +
+        <input ref={this.b} type="text"/>
+        <button onClick={this.add}>+</button>
+        <input ref={this.c} type="text"/>
       </div>
     )
   }
 }
 
-ReactDOM.render(<Count />, document.querySelector('#root'))
+ReactDOM.render(<Sum />, document.querySelector('#root'))
